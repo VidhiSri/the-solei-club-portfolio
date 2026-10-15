@@ -110,7 +110,11 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 let quoteIndex = 0;
 function showQuote() {
   const quote = testimonials[quoteIndex];
-  document.querySelector("#testimonial-quote").textContent = `“${quote.quote}”`;
+  const quoteElement = document.querySelector("#testimonial-quote");
+  quoteElement.textContent = `“${quote.quote}”`;
+  quoteElement.classList.remove("quote-enter");
+  void quoteElement.offsetWidth;
+  quoteElement.classList.add("quote-enter");
   document.querySelector("#testimonial-by").textContent = quote.by;
   document.querySelector("#testimonial-place").textContent = quote.place;
   document.querySelector("#quote-count").textContent = `0${quoteIndex + 1} / 0${testimonials.length}`;
