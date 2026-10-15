@@ -115,10 +115,26 @@ img { display: block; max-width: 100%; }
 .service-item li::before { margin-right: 9px; color: var(--primary); content: "—"; }
 
 .travel-section { background: #f3f1eb; }
-.travel-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; }
-.travel-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
-.travel-card h3 { margin: 13px 0 4px; font-size: 28px; }
-.travel-card p { margin: 0; color: var(--muted-foreground); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.guide-carousel { max-width: 1120px; margin: 0 auto; }
+.travel-grid { display: block; }
+.travel-card { display: grid; min-height: 420px; grid-template-columns: 1.18fr .82fr; background: #f0eee7; }
+.travel-card[hidden] { display: none; }
+.guide-image-wrap { min-height: 420px; overflow: hidden; background: var(--muted); }
+.guide-image-wrap img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; animation: guide-reveal .55s ease both; }
+.guide-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(30px,5vw,68px); }
+.guide-copy .eyebrow { color: var(--muted-foreground); line-height: 1.7; }
+.guide-copy h3 { margin: 20px 0 2px; font-size: clamp(44px,6vw,72px); line-height: .95; }
+.guide-copy .guide-caption { margin: 12px 0 17px; color: var(--primary); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+.guide-copy .guide-detail { max-width: 320px; margin: 0 0 28px; color: var(--muted-foreground); font-size: 12px; line-height: 1.9; }
+.guide-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 18px; }
+.guide-pagination { display: flex; align-items: center; gap: 8px; }
+.guide-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #c8c6bc; cursor: pointer; transition: background .2s, transform .2s; }
+.guide-dot.is-active { background: var(--primary); transform: scale(1.35); }
+.guide-arrows { display: flex; align-items: center; gap: 10px; }
+.guide-count { margin-right: 8px; color: var(--muted-foreground); font-size: 9px; letter-spacing: .1em; }
+.guide-arrows button { width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--foreground); cursor: pointer; font-size: 17px; transition: background .2s; }
+.guide-arrows button:hover { background: var(--muted); }
+@keyframes guide-reveal { from { opacity: .55; transform: scale(1.015); } to { opacity: 1; transform: scale(1); } }
 
 .testimonial-section { padding: 82px 0 88px; }
 .testimonial-inner { max-width: 850px; margin-inline: auto; text-align: center; }
@@ -216,7 +232,10 @@ img { display: block; max-width: 100%; }
   .about-photo-wrap { width: 90%; }
   .about-copy .section-title { font-size: 40px; }
   .services-photo { max-height: none; }
-  .travel-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 14px; }
+  .travel-card { grid-template-columns: 1fr; }
+  .guide-image-wrap, .guide-image-wrap img { min-height: 0; height: auto; aspect-ratio: 4/3; }
+  .guide-copy { min-height: 300px; padding: 30px; }
+  .guide-copy h3 { margin-top: 15px; font-size: 52px; }
   .instagram-section { padding-block: 52px; }
   .instagram-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
   .travel-card h3 { font-size: 25px; }
