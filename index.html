@@ -3,92 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#eee3d3" />
-    <meta name="description" content="The Solei Club — hospitality, travel and lifestyle storytelling by Klaudia." />
-    <title>The Solei Club — Where Hospitality Meets Storytelling</title>
-    <link rel="preload" as="image" href="canva_design/1.png" />
+    <meta name="theme-color" content="#f8f7f2" />
+    <meta name="description" content="The Solei Club — travel, hospitality, and visual storytelling by Klaudia." />
+    <title>The Solei Club — Travel &amp; Hospitality Storytelling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="assets/klaudia-0.jpg" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="site.js" defer></script>
   </head>
   <body>
-    <header class="site-header" id="top">
-      <a class="wordmark" href="#top" aria-label="The Solei Club, home">
-        <span class="wordmark-mark" aria-hidden="true">SC</span>
-        <span class="wordmark-name">The Solei Club</span>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="header-brand" href="#home" aria-label="The Solei Club home">
+        <img class="brand-logo" src="assets/klaudia-1.jpg" alt="" />
+        <span class="wordmark">the solei club<small>by Klaudia</small></span>
       </a>
-      <details class="site-menu">
-        <summary aria-label="Open site menu"><span class="menu-label">Explore</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span></summary>
-        <nav aria-label="Main menu">
-          <a href="#top">Home</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#guides">Travel guides</a>
-          <a href="#testimonials">Kind words</a>
-          <a class="contact-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
-        </nav>
-      </details>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#portfolio">Portfolio</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#work-together">Work Together</a>
+        <a class="nav-link" href="#travel">Travel</a>
+      </nav>
+      <a class="button button-outline header-cta" href="#contact">Let’s create together <span aria-hidden="true">↗</span></a>
     </header>
-    <main aria-label="The Solei Club portfolio">
-      <section class="design-capture" aria-label="Where Hospitality Meets Storytelling">
-        <img src="canva_design/1.png" alt="Where Hospitality Meets Storytelling — The Solei Club, overlooking a pool and the countryside." fetchpriority="high" />
+
+    <main id="main">
+      <section class="hero" id="home" aria-label="Welcome to The Solei Club">
+        <img class="hero-photo" src="assets/klaudia-0.jpg" alt="Sunlit infinity pool overlooking the coast, with a thatched parasol and loungers" fetchpriority="high" />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <img class="hero-logo" src="assets/klaudia-1.jpg" alt="The Solei Club logo" fetchpriority="high" />
+          <p class="eyebrow hero-caption">Travel · Content creation · Beautiful spaces</p>
+          <h1>The Solei Club</h1>
+          <p class="tagline">Where Hospitality Meets Storytelling</p>
+          <a class="button button-glass" href="#portfolio">Explore my work <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-bottom">
+          <span>A collection of places &amp; stories</span>
+          <a href="#selected-work">Discover more <span aria-hidden="true">↓</span></a>
+          <span class="hero-bottom-right">Through Klaudia’s lens</span>
+        </div>
       </section>
-      <section class="design-capture" id="portfolio" aria-label="Portfolio: Hacienda by Wabi, Tulum">
-        <img src="canva_design/2.png" alt="Portfolio introduction and photographs of Hacienda by Wabi in Tulum." loading="lazy" />
+
+      <section class="section selected-section" id="selected-work">
+        <div class="container">
+          <div class="section-intro">
+            <div><p class="eyebrow">A few places, a thousand feelings</p><h2 class="section-title">Selected <em>stories.</em></h2></div>
+            <div class="section-intro-copy"><p class="section-copy">From boutique hotels to private luxury villas, each space has its own story. Here are a few I’ve had the pleasure of telling.</p><a class="text-link" href="#portfolio">View the portfolio <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="project-grid project-grid-featured" id="featured-projects"></div>
+        </div>
       </section>
-      <section class="design-capture" aria-label="Hacienda by Wabi, Tulum">
-        <img src="canva_design/3.png" alt="Hacienda by Wabi, Tulum — courtyard, living room and a guest enjoying the stay." loading="lazy" />
+
+      <section class="section portfolio-section" id="portfolio">
+        <div class="container">
+          <div class="section-intro">
+            <div><p class="eyebrow">Beautiful spaces, thoughtfully captured</p><h2 class="section-title">The <em>portfolio.</em></h2></div>
+            <p class="section-copy section-intro-copy">Every property is different — and so is the way it’s felt, experienced, and brought to life through visuals.</p>
+          </div>
+          <div class="project-grid" id="all-projects"></div>
+        </div>
       </section>
-      <section class="design-capture" aria-label="Hotel Indigo Krakow, Wawel Castle">
-        <img src="canva_design/4.png" alt="Hotel Indigo Krakow, Wawel Castle — bedroom and bathroom photography." loading="lazy" />
+
+      <section class="section about-section" id="about">
+        <div class="container about-layout">
+          <div class="about-photo-wrap"><img class="about-photo" src="assets/klaudia-38.jpg" alt="Klaudia enjoying a sunlit terrace overlooking the sea in Corfu" loading="lazy" /><span class="photo-note">A little curiosity. A lot of sunshine.</span></div>
+          <div class="about-copy"><p class="eyebrow">The person behind the lens</p><h2 class="section-title">Hi, I’m Klaudia.<br /><em>A traveler &amp; storyteller.</em></h2><p class="section-copy">I create authentic and visually captivating content that brings out the unique charm of boutique stays, hotels, Airbnbs and lifestyle brands.</p><p class="section-copy">With a strong eye for design and a background in hospitality, I highlight each space’s atmosphere and personality in a way that resonates with guests.</p><p class="section-copy">As an avid traveler, I understand what people truly value in their stays. My work goes beyond visuals. I also create travel guides that connect your audience with destinations in a meaningful way.</p><p class="section-copy">By focusing on storytelling, details and aesthetics, I craft content that inspires, engages, and leaves a lasting impression.</p></div>
+        </div>
       </section>
-      <section class="design-capture" aria-label="Hotel Indigo Krakow, Wawel Castle continued">
-        <img src="canva_design/5.png" alt="Hotel Indigo Krakow — portraits, interiors and guest room details." loading="lazy" />
+
+      <section class="section services-section" id="work-together">
+        <div class="container services-layout">
+          <div class="services-photo-wrap"><img class="services-photo" src="assets/klaudia-35.jpg" alt="Sunlit villa terrace in Corfu" loading="lazy" /><p class="eyebrow">Where your space becomes a story</p><h2 class="section-title">Let’s create <em>together.</em></h2><p class="section-copy">Authentic visuals, thoughtful details, and stories that connect your space with the people who will love it.</p><a class="text-link" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a></div>
+          <div class="service-list">
+            <article class="service-item"><span class="eyebrow">01</span><h3>Visual Content Creation</h3><ul><li>Airbnb &amp; Booking photography</li><li>Content for social media &amp; websites</li><li>Short-form videos for Instagram &amp; TikTok</li></ul></article>
+            <article class="service-item"><span class="eyebrow">02</span><h3>Travel Guide Creation</h3><ul><li>Personalized destination guides to elevate your guest experience</li></ul></article>
+            <article class="service-item"><span class="eyebrow">03</span><h3>Social Media Add-On</h3><ul><li>Feature your space on my Instagram to reach a wider audience</li></ul></article>
+          </div>
+        </div>
       </section>
-      <section class="design-capture" aria-label="Palácio Ludovice Wine Experience Hotel, Lisbon">
-        <img src="canva_design/6.png" alt="Palácio Ludovice Wine Experience Hotel, Lisbon — bedroom and breakfast details." loading="lazy" />
+
+      <section class="section travel-section" id="travel">
+        <div class="container">
+          <div class="section-intro"><div><p class="eyebrow">A curious heart, an open itinerary</p><h2 class="section-title">Explore like a <em>local.</em></h2></div><p class="section-copy section-intro-copy">City strolls, island days, and the little details that make a destination unforgettable.</p></div>
+          <div class="travel-grid" id="travel-guides"></div>
+        </div>
       </section>
-      <section class="design-capture" aria-label="Palácio Ludovice Wine Experience Hotel, Lisbon continued">
-        <img src="canva_design/7.png" alt="Palácio Ludovice — restaurant, wine and hotel interiors." loading="lazy" />
+
+      <section class="section testimonial-section" id="kind-words">
+        <div class="container testimonial-inner"><p class="eyebrow">Kind words from beautiful places</p><span class="quote-mark" aria-hidden="true">“</span><blockquote id="testimonial-quote"></blockquote><p class="testimonial-by" id="testimonial-by"></p><p class="testimonial-place" id="testimonial-place"></p><div class="testimonial-controls"><button type="button" id="previous-quote" aria-label="Previous testimonial">←</button><span id="quote-count"></span><button type="button" id="next-quote" aria-label="Next testimonial">→</button></div></div>
       </section>
-      <section class="design-capture" aria-label="Hotel Indigo Venice — Sant'Elena by IHG">
-        <img src="canva_design/8.png" alt="Hotel Indigo Venice — Sant'Elena — hotel exterior and garden." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Hotel Indigo Venice — Sant'Elena by IHG continued">
-        <img src="canva_design/9.png" alt="Hotel Indigo Venice — guest room, breakfast and hotel details." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Hotel Pullmann, Budapest">
-        <img src="canva_design/10.png" alt="Hotel Pullmann, Budapest — restaurant, lounge and room photography." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Hotel Pullmann, Budapest continued">
-        <img src="canva_design/11.png" alt="Hotel Pullmann — dining, guest moments and suite details." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Sun’n Salt Villa, Corfu">
-        <img src="canva_design/12.png" alt="Sun’n Salt Villa, Corfu — sea views, villa and a guest opening the curtains." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Sun’n Salt Villa, Corfu continued">
-        <img src="canva_design/13.png" alt="Sun’n Salt Villa — poolside moments and travel reading." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Hotel Clipper Boardinghouse, Hamburg">
-        <img src="canva_design/14.png" alt="Hotel Clipper Boardinghouse, Hamburg — rooms and guest moments." loading="lazy" />
-      </section>
-      <section class="design-capture" aria-label="Hotel Clipper Boardinghouse, Hamburg continued">
-        <img src="canva_design/15.png" alt="Hotel Clipper Boardinghouse — bathroom and suite details." loading="lazy" />
-      </section>
-      <section class="design-capture" id="about" aria-label="About me">
-        <img src="canva_design/16.png" alt="About Klaudia: a traveler and creative partner for beautiful spaces." loading="lazy" />
-      </section>
-      <section class="design-capture" id="services" aria-label="What I offer">
-        <img src="canva_design/17.png" alt="Visual content creation, travel guide creation and social media add-on services. Contact: thesoleiclub@gmail.com." loading="lazy" />
-      </section>
-      <section class="design-capture" id="guides" aria-label="Explore like a local">
-        <img src="canva_design/18.png" alt="Pocket guides: Rome, Warsaw, Zakynthos and Lisbon." loading="lazy" />
-      </section>
-      <section class="design-capture" id="testimonials" aria-label="Start your story here">
-        <img src="canva_design/19.png" alt="Client testimonials from Hotel Pullmann Budapest, Hacienda Wabi Tulum and Sun’n Salt Villa Corfu." loading="lazy" />
-      </section>
-      <section class="design-capture" id="contact" aria-label="Contact The Solei Club">
-        <img src="canva_design/20.png" alt="The Solei Club contact details: Klaudiasgram on Instagram and thesoleiclub@gmail.com." loading="lazy" />
-      </section>
+
+      <section class="contact-band" id="contact"><p class="eyebrow">Your space. Our next story.</p><h2>Let’s create something <em>beautiful.</em></h2><a class="button button-dark" href="mailto:thesoleiclub@gmail.com">Let’s create together <span aria-hidden="true">↗</span></a></section>
     </main>
+
+    <footer class="site-footer"><div class="footer-main"><a class="footer-brand" href="#home"><img src="assets/klaudia-1.jpg" alt="The Solei Club logo" /><span class="wordmark">the solei club<small>Travel · Spaces · Stories</small></span></a><nav aria-label="Footer navigation"><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#work-together">Work Together</a><a href="#travel">Travel</a><a href="#contact">Contact</a></nav><a class="instagram-link" href="https://www.instagram.com/klaudiasgram/" target="_blank" rel="noreferrer" aria-label="Klaudia on Instagram">◎ &nbsp;@klaudiasgram</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Solei Club</span><span>Beautiful places. Meaningful stories.</span><a href="mailto:thesoleiclub@gmail.com">thesoleiclub@gmail.com</a></div></footer>
+
+    <dialog class="gallery-dialog" id="gallery" aria-label="Project photo gallery"><button class="gallery-close" id="gallery-close" aria-label="Close gallery">×</button><h2 id="gallery-title"></h2><p id="gallery-location"></p><img id="gallery-image" alt="" /><div class="gallery-controls"><button id="gallery-previous" aria-label="Previous photograph">←</button><span id="gallery-count"></span><button id="gallery-next" aria-label="Next photograph">→</button></div></dialog>
   </body>
 </html>
