@@ -39,12 +39,20 @@ const guideSlides = document.querySelector("#travel-guides");
 const guidePagination = document.querySelector("#guide-pagination");
 let guideIndex = 0;
 function renderGuides() {
-  guideSlides.innerHTML = destinations.map((destination, index) => `<article class="travel-card${index === guideIndex ? " is-active" : ""}" ${index === guideIndex ? "" : "hidden"} aria-roledescription="slide" aria-label="${index + 1} of ${destinations.length}">
-    <div class="guide-image-wrap"><img src="${photo(destination.image)}" alt="${destination.name} — ${destination.caption}" ${index === guideIndex ? "fetchpriority=high" : "loading=lazy"} /></div>
-    <div class="guide-copy"><p class="eyebrow">The Solei Club · Pocket Guide ${String(index + 1).padStart(2, "0")}</p><h3>${destination.name}</h3><p class="guide-caption">${destination.caption}</p><p class="guide-detail">${destination.detail}</p><a class="text-link" href="https://www.instagram.com/klaudiasgram/" target="_blank" rel="noreferrer">Explore on Instagram <span aria-hidden="true">↗</span></a></div>
-  </article>`).join("");
+  const visibleGuides = [-1, 0, 1].map((offset) => (guideIndex + offset + destinations.length) % destinations.length);
+  guideSlides.innerHTML = visibleGuides.map((index, position) => {
+    const destination = destinations[index];
+    const active = position === 1;
+    return `<article class="travel-card${active ? " is-active" : " is-neighbor"}" aria-roledescription="slide" aria-label="${index + 1} of ${destinations.length}">
+      <button class="guide-card-select" type="button" data-guide-index="${index}" aria-label="Show ${destination.name} pocket guide" aria-pressed="${active}">
+        <div class="guide-image-wrap"><img src="${photo(destination.image)}" alt="${destination.name} — ${destination.caption}" ${active ? "fetchpriority=high" : "loading=lazy"} /></div>
+        <div class="guide-copy"><p class="eyebrow">Pocket Guide ${String(index + 1).padStart(2, "0")}</p><h3>${destination.name}</h3><p class="guide-caption">${destination.caption}</p><p class="guide-detail">${destination.detail}</p></div>
+      </button>
+      ${active ? '<a class="text-link guide-link" href="https://www.instagram.com/klaudiasgram/" target="_blank" rel="noreferrer">Explore on Instagram <span aria-hidden="true">↗</span></a>' : ""}
+    </article>`;
+  }).join("");
   guidePagination.innerHTML = destinations.map((destination, index) => `<button class="guide-dot${index === guideIndex ? " is-active" : ""}" type="button" aria-label="Show ${destination.name} pocket guide" aria-current="${index === guideIndex ? "true" : "false"}" data-guide-index="${index}"></button>`).join("");
-  document.querySelector("#guide-count").textContent = `${String(guideIndex + 1).padStart(2, "0")} / ${String(destinations.length).padStart(2, "0")}`;
+  document.querySelector("#guide-count").textContent = `${String(guideIndex + 1).padStart(2, "0")} / ${String(destinations.length).padStart(2, "0")} · ${destinations.length} guides`;
 }
 function changeGuide(step) {
   guideIndex = (guideIndex + step + destinations.length) % destinations.length;
@@ -53,6 +61,12 @@ function changeGuide(step) {
 renderGuides();
 document.querySelector("#guide-previous").addEventListener("click", () => changeGuide(-1));
 document.querySelector("#guide-next").addEventListener("click", () => changeGuide(1));
+guideSlides.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-guide-index]");
+  if (!button) return;
+  guideIndex = Number(button.dataset.guideIndex);
+  renderGuides();
+});
 guidePagination.addEventListener("click", (event) => {
   const button = event.target.closest("[data-guide-index]");
   if (!button) return;
