@@ -30,7 +30,7 @@
         <a class="nav-link" href="#work-together">Work Together</a>
         <a class="nav-link" href="#travel">Travel</a>
       </nav>
-      <a class="button button-outline header-cta" href="#contact">Let’s create together <span aria-hidden="true">↗</span></a>
+      <button class="button button-outline header-cta" type="button" data-contact-open>Let’s create together <span aria-hidden="true">↗</span></button>
     </header>
 
     <main id="main">
@@ -80,7 +80,7 @@
 
       <section class="section services-section" id="work-together">
         <div class="container services-layout">
-          <div class="services-photo-wrap"><img class="services-photo" src="assets/klaudia-35.jpg" alt="Sunlit villa terrace in Corfu" loading="lazy" /><p class="eyebrow">Where your space becomes a story</p><h2 class="section-title">Let’s create <em>together.</em></h2><p class="section-copy">Authentic visuals, thoughtful details, and stories that connect your space with the people who will love it.</p><a class="text-link" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a></div>
+          <div class="services-photo-wrap"><img class="services-photo" src="assets/klaudia-35.jpg" alt="Sunlit villa terrace in Corfu" loading="lazy" /><p class="eyebrow">Where your space becomes a story</p><h2 class="section-title">Let’s create <em>together.</em></h2><p class="section-copy">Authentic visuals, thoughtful details, and stories that connect your space with the people who will love it.</p><button class="text-link contact-text-button" type="button" data-contact-open>Start a conversation <span aria-hidden="true">↗</span></button></div>
           <div class="service-list">
             <article class="service-item"><span class="eyebrow">01</span><h3>Visual Content Creation</h3><ul><li>Airbnb &amp; Booking photography</li><li>Content for social media &amp; websites</li><li>Short-form videos for Instagram &amp; TikTok</li></ul></article>
             <article class="service-item"><span class="eyebrow">02</span><h3>Travel Guide Creation</h3><ul><li>Personalized destination guides to elevate your guest experience</li></ul></article>
@@ -100,11 +100,27 @@
         <div class="container testimonial-inner"><p class="eyebrow">Kind words from beautiful places</p><span class="quote-mark" aria-hidden="true">“</span><blockquote id="testimonial-quote"></blockquote><p class="testimonial-by" id="testimonial-by"></p><p class="testimonial-place" id="testimonial-place"></p><div class="testimonial-controls"><button type="button" id="previous-quote" aria-label="Previous testimonial">←</button><span id="quote-count"></span><button type="button" id="next-quote" aria-label="Next testimonial">→</button></div></div>
       </section>
 
-      <section class="contact-band" id="contact"><p class="eyebrow">Your space. Our next story.</p><h2>Let’s create something <em>beautiful.</em></h2><a class="button button-dark" href="mailto:thesoleiclub@gmail.com">Let’s create together <span aria-hidden="true">↗</span></a></section>
+      <section class="contact-band" id="contact"><p class="eyebrow">Your space. Our next story.</p><h2>Let’s create something <em>beautiful.</em></h2><button class="button button-dark" type="button" data-contact-open>Let’s create together <span aria-hidden="true">↗</span></button></section>
     </main>
 
     <footer class="site-footer"><div class="footer-main"><a class="footer-brand" href="#home"><img src="assets/solei-logo.png" alt="The Solei Club logo" /><span class="wordmark">the solei club<small>Travel · Spaces · Stories</small></span></a><nav aria-label="Footer navigation"><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#work-together">Work Together</a><a href="#travel">Travel</a><a href="#contact">Contact</a></nav><a class="instagram-link" href="https://www.instagram.com/klaudiasgram/" target="_blank" rel="noreferrer" aria-label="Klaudia on Instagram">◎ &nbsp;@klaudiasgram</a></div><div class="footer-bottom"><span>© <span id="year"></span> The Solei Club</span><span>Beautiful places. Meaningful stories.</span><a href="mailto:thesoleiclub@gmail.com">thesoleiclub@gmail.com</a></div></footer>
 
     <dialog class="gallery-dialog" id="gallery" aria-label="Project photo gallery"><button class="gallery-close" id="gallery-close" aria-label="Close gallery">×</button><h2 id="gallery-title"></h2><p id="gallery-location"></p><img id="gallery-image" alt="" /><div class="gallery-controls"><button id="gallery-previous" aria-label="Previous photograph">←</button><span id="gallery-count"></span><button id="gallery-next" aria-label="Next photograph">→</button></div></dialog>
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
+      <button class="contact-close" type="button" aria-label="Close contact form">×</button>
+      <p class="eyebrow">Your space. Our next story.</p>
+      <h2 id="contact-title">Let’s create <em>together.</em></h2>
+      <p class="contact-intro">Tell me a little about what you have in mind. I’d love to hear from you.</p>
+      <form id="contact-form">
+        <label for="contact-name">Your name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Name" required />
+        <label for="contact-email">Email address</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <label for="contact-question">How can I help?</label>
+        <textarea id="contact-question" name="question" rows="4" placeholder="Share a little about your project or question…" required></textarea>
+        <p class="contact-form-note" id="contact-form-note" aria-live="polite">Submitting opens a pre-filled email for you to send.</p>
+        <button class="button button-dark contact-submit" type="submit">Prepare your message <span aria-hidden="true">↗</span></button>
+      </form>
+    </dialog>
   </body>
 </html>

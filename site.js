@@ -114,3 +114,21 @@ gallery.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") changeGallery(-1);
   if (event.key === "ArrowRight") changeGallery(1);
 });
+
+const contactDialog = document.querySelector("#contact-dialog");
+document.querySelectorAll("[data-contact-open]").forEach((button) => {
+  button.addEventListener("click", () => contactDialog.showModal());
+});
+document.querySelector(".contact-close").addEventListener("click", () => contactDialog.close());
+contactDialog.addEventListener("click", (event) => {
+  if (event.target === contactDialog) contactDialog.close();
+});
+document.querySelector("#contact-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  const subject = `Website enquiry from ${form.get("name")}`;
+  const body = `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\nQuestion:\n${form.get("question")}`;
+  const mailto = `mailto:thesoleiclub@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.querySelector("#contact-form-note").textContent = "Your email app is opening with your message ready to send.";
+  window.location.href = mailto;
+});
