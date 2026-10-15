@@ -195,6 +195,10 @@ img { display: block; max-width: 100%; }
 .contact-dialog input:focus, .contact-dialog textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(85,91,67,.12); }
 .contact-dialog textarea { min-height: 116px; resize: vertical; }
 .contact-form-note { margin: 2px 0 5px; color: var(--muted-foreground); font-size: 10px; line-height: 1.6; }
+.contact-form-fallback { color: var(--primary); font-size: 10px; text-decoration: underline; text-underline-offset: 3px; }
+.contact-form-fallback[hidden] { display: none; }
+.contact-honeypot { position: absolute; left: -10000px; width: 1px !important; height: 1px; }
+.contact-submit:disabled { opacity: .62; cursor: wait; transform: none; }
 .contact-submit { justify-self: start; min-height: 44px; }
 .contact-text-button { padding: 0 0 8px; border: 0; border-bottom: 1px solid var(--primary); background: transparent; }
 

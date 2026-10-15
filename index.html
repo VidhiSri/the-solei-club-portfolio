@@ -134,15 +134,19 @@
       <p class="eyebrow">Your space. Our next story.</p>
       <h2 id="contact-title">Let’s create <em>together.</em></h2>
       <p class="contact-intro">Tell me a little about what you have in mind. I’d love to hear from you.</p>
-      <form id="contact-form">
+      <form id="contact-form" action="https://formsubmit.co/ajax/thesoleiclub@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from The Solei Club website" />
+        <input type="hidden" name="_template" value="table" />
+        <input class="contact-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <label for="contact-name">Your name</label>
         <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Name" required />
         <label for="contact-email">Email address</label>
         <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
         <label for="contact-question">How can I help?</label>
         <textarea id="contact-question" name="question" rows="4" placeholder="Share a little about your project or question…" required></textarea>
-        <p class="contact-form-note" id="contact-form-note" aria-live="polite">Submitting opens a pre-filled email for you to send.</p>
-        <button class="button button-dark contact-submit" type="submit">Prepare your message <span aria-hidden="true">↗</span></button>
+        <p class="contact-form-note" id="contact-form-note" aria-live="polite">Your message will be sent directly to The Solei Club.</p>
+        <a class="contact-form-fallback" id="contact-form-fallback" href="mailto:thesoleiclub@gmail.com" hidden>Or email thesoleiclub@gmail.com</a>
+        <button class="button button-dark contact-submit" type="submit">Send a message <span aria-hidden="true">↗</span></button>
       </form>
     </dialog>
   </body>

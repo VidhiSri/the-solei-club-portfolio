@@ -189,14 +189,36 @@ document.querySelector(".contact-close").addEventListener("click", () => contact
 contactDialog.addEventListener("click", (event) => {
   if (event.target === contactDialog) contactDialog.close();
 });
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
+const contactForm = document.querySelector("#contact-form");
+contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const subject = `Website enquiry from ${form.get("name")}`;
-  const body = `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\nQuestion:\n${form.get("question")}`;
-  const mailto = `mailto:thesoleiclub@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.querySelector("#contact-form-note").textContent = "Your email app is opening with your message ready to send.";
-  window.location.href = mailto;
+  const note = document.querySelector("#contact-form-note");
+  const fallback = document.querySelector("#contact-form-fallback");
+  const submitButton = contactForm.querySelector("[type=submit]");
+  const submitLabel = "Send a message";
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending…";
+  note.textContent = "Sending your message securely…";
+  fallback.hidden = true;
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(Object.fromEntries(new FormData(contactForm).entries())),
+    });
+    const result = await response.json();
+    if (!response.ok || !(result.success === true || result.success === "true")) {
+      throw new Error(result.message || "The message could not be sent.");
+    }
+    contactForm.reset();
+    note.textContent = "Thank you — your message has been sent. Klaudia will be in touch soon.";
+  } catch (error) {
+    note.textContent = "We couldn’t send your message just now. Please try again or use the email link below.";
+    fallback.hidden = false;
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = `${submitLabel} <span aria-hidden="true">↗</span>`;
+  }
 });
 
 document.querySelectorAll(".section-intro, .about-photo-wrap, .about-copy, .services-photo-wrap, .service-item, .testimonial-inner, .contact-band, .instagram-grid a, .site-footer").forEach((element) => element.setAttribute("data-reveal", ""));
