@@ -39,6 +39,10 @@ img { display: block; max-width: 100%; }
 .button span { font-size: 14px; }
 .button-outline { border-color: var(--primary); color: var(--foreground); }
 .button-outline:hover { background: var(--muted); }
+.header-cta { min-height: 46px; gap: 14px; padding: 0 8px 0 19px; border: 1px solid var(--primary); border-radius: 999px; background: transparent; color: var(--foreground); font-size: 9px; font-weight: 500; letter-spacing: .12em; white-space: nowrap; transition: color .2s, background .2s, transform .2s; }
+.header-cta:hover { transform: translateY(-1px); background: var(--primary); color: #fff; }
+.header-cta span { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 50%; background: var(--primary); color: #fff; font-size: 14px; transition: color .2s, background .2s, transform .2s; }
+.header-cta:hover span { transform: rotate(45deg); background: #fff; color: var(--primary); }
 .menu-toggle { display: none; }
 
 .hero { position: relative; display: grid; min-height: min(710px,calc(100svh - 88px)); min-height: min(710px,calc(100vh - 88px)); place-items: center; overflow: hidden; color: #fff; text-align: center; }
@@ -116,6 +120,7 @@ img { display: block; max-width: 100%; }
 
 .travel-section { background: #f3f1eb; }
 .guide-carousel { max-width: 1120px; margin: 0 auto; }
+.guide-carousel:focus-visible { outline: 1px solid var(--primary); outline-offset: 8px; }
 .travel-grid { display: grid; grid-template-columns: .86fr 1.15fr .86fr; align-items: center; gap: 16px; }
 .travel-card { min-width: 0; overflow: hidden; background: #f0eee7; transition: transform .3s ease, opacity .3s ease, box-shadow .3s ease; }
 .travel-card.is-neighbor { opacity: .78; transform: scale(.94); }
@@ -135,6 +140,7 @@ img { display: block; max-width: 100%; }
 .guide-link { margin: 0 28px 24px; }
 .guide-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 18px; }
 .guide-pagination { display: flex; align-items: center; gap: 8px; }
+.guide-hint { margin-left: auto; color: var(--muted-foreground); font-size: 9px; letter-spacing: .06em; }
 .guide-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #c8c6bc; cursor: pointer; transition: background .2s, transform .2s; }
 .guide-dot.is-active { background: var(--primary); transform: scale(1.35); }
 .guide-arrows { display: flex; align-items: center; gap: 10px; }
@@ -199,7 +205,7 @@ img { display: block; max-width: 100%; }
   .main-nav { gap: 18px; }
   .wordmark { font-size: 25px; }
   .brand-logo { width: 46px; height: 46px; }
-  .header-cta { padding-inline: 11px; font-size: 9px; }
+  .header-cta { padding: 0 8px 0 16px; font-size: 9px; }
   .about-layout, .services-layout { gap: 48px; }
 }
 @media (max-width:760px) {
@@ -252,6 +258,7 @@ img { display: block; max-width: 100%; }
   .guide-copy .guide-detail { font-size: 10px; }
   .guide-link { margin: 0 20px 20px; font-size: 8px; }
   .guide-controls { padding-top: 14px; }
+  .guide-hint { font-size: 8px; }
   .instagram-section { padding-block: 52px; }
   .instagram-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
   .travel-card h3 { font-size: 25px; }
@@ -274,4 +281,11 @@ img { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .has-scroll-reveal [data-reveal] { opacity: 1; transform: none; }
+}
+
+.has-scroll-reveal [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+.has-scroll-reveal [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .has-scroll-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
 }

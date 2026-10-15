@@ -25,7 +25,7 @@ const testimonials = [
 ];
 
 function projectCard(project, index) {
-  return `<article class="project-card">
+  return `<article class="project-card" data-reveal>
     <button class="project-open" type="button" data-project="${index}" aria-label="View ${project.name} photo gallery">
       <img src="${photo(project.images[0])}" alt="${project.name} in ${project.location}" loading="lazy" />
     </button>
@@ -61,7 +61,39 @@ function changeGuide(step) {
 renderGuides();
 document.querySelector("#guide-previous").addEventListener("click", () => changeGuide(-1));
 document.querySelector("#guide-next").addEventListener("click", () => changeGuide(1));
+const guideCarousel = document.querySelector(".guide-carousel");
+let guidePointerStart = null;
+let suppressGuideClick = false;
+let lastGuideWheel = 0;
+guideCarousel.addEventListener("pointerdown", (event) => {
+  guidePointerStart = { x: event.clientX, y: event.clientY };
+});
+guideCarousel.addEventListener("pointerup", (event) => {
+  if (!guidePointerStart) return;
+  const dx = event.clientX - guidePointerStart.x;
+  const dy = event.clientY - guidePointerStart.y;
+  guidePointerStart = null;
+  if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.25) return;
+  suppressGuideClick = true;
+  changeGuide(dx < 0 ? 1 : -1);
+  window.setTimeout(() => { suppressGuideClick = false; }, 350);
+});
+guideCarousel.addEventListener("pointercancel", () => { guidePointerStart = null; });
+guideCarousel.addEventListener("wheel", (event) => {
+  if (Math.abs(event.deltaX) < 24 || Math.abs(event.deltaX) < Math.abs(event.deltaY) * 1.15) return;
+  event.preventDefault();
+  const now = Date.now();
+  if (now - lastGuideWheel < 500) return;
+  lastGuideWheel = now;
+  changeGuide(event.deltaX > 0 ? 1 : -1);
+}, { passive: false });
+guideCarousel.addEventListener("keydown", (event) => {
+  if (event.target.closest("input, textarea, select")) return;
+  if (event.key === "ArrowLeft") { event.preventDefault(); changeGuide(-1); }
+  if (event.key === "ArrowRight") { event.preventDefault(); changeGuide(1); }
+});
 guideSlides.addEventListener("click", (event) => {
+  if (suppressGuideClick) { event.preventDefault(); return; }
   const button = event.target.closest("[data-guide-index]");
   if (!button) return;
   guideIndex = Number(button.dataset.guideIndex);
@@ -166,3 +198,22 @@ document.querySelector("#contact-form").addEventListener("submit", (event) => {
   document.querySelector("#contact-form-note").textContent = "Your email app is opening with your message ready to send.";
   window.location.href = mailto;
 });
+
+document.querySelectorAll(".section-intro, .about-photo-wrap, .about-copy, .services-photo-wrap, .service-item, .testimonial-inner, .contact-band, .instagram-grid a, .site-footer").forEach((element) => element.setAttribute("data-reveal", ""));
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("has-scroll-reveal");
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+  function observeRevealElements() {
+    document.querySelectorAll("[data-reveal]:not([data-reveal-observed])").forEach((element) => {
+      element.dataset.revealObserved = "true";
+      revealObserver.observe(element);
+    });
+  }
+  observeRevealElements();
+}
